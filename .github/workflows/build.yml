@@ -24,13 +24,13 @@ jobs:
 
     - name: Build Jokr App Package
       run: |
-        mkdir build && cd build
-        psp-cmake .. -DCMAKE_BUILD_TYPE=Release
+        cd Jokr
+        psp-cmake . -DCMAKE_BUILD_TYPE=Release
         make
 
     - name: Push package artifact
       uses: actions/upload-artifact@v3
       with:
         name: jokr-psp-build_${{ env.sha_name }}
-        path: build/EBOOT.PBP
+        path: Jokr/EBOOT.PBP
         if-no-files-found: error
