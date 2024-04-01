@@ -28,10 +28,8 @@ if (PSP)
 		SDL2
 		SDL2_ttf
 		SDL2_gfx
-		png
 		GL
 		freetype
-		z
 		pspvram
 		pspvfpu
 		pspgu
@@ -44,6 +42,8 @@ if (PSP)
 		mbedtls
 		mbedcrypto
 		mbedx509
+		png
+		z
     )
 
 else()
