@@ -5,7 +5,7 @@ class: center, middle, inverse
 ---
 <!-- markdownlint-disable MD041 MD001 MD024 MD003 MD033-->
 
-# PSPHDC'23
+# PSPHDC'24
 
 ### New SSL support with cURL
 
@@ -34,7 +34,7 @@ mbedTLS, PolarSSL, wolfSSL, and others.
 
 # Implementation
 
-## PolarSSL
+## PolarSSL / mbedTLS
 
 PolarSSL offers an SSL library with an intuitive API and readable
 source code in portable C language.
@@ -49,7 +49,7 @@ and you can't connect to current web servers due to outdated ciphers and protoco
 
 # Implementation
 
-## Why PolarSSL?
+## Why PolarSSL / mbedTLS?
 
 I have been building homebrew apps on other Sony platforms,
 including PS3, PS4, and PS Vita.
@@ -75,7 +75,7 @@ and also on PS4 ([OpenOrbis SDK](https://github.com/bucanero/oosdk_libraries/tre
 
 # Implementation
 
-## PSP
+## PSP - from polarSSL to mbedTLS
 
 I recently started building [my first PSP homebrew](https://github.com/bucanero/apollo-psp),
 and found that while the PSP-SDK had a libcurl build, it was quite old (7.15.1),
@@ -87,13 +87,18 @@ Based on my previous experience (PS3/PS4), I went ahead and decided to port
 and update [libcurl to 7.64.1](https://github.com/pspdev/psp-packages/pull/85)
 to have a fully working TLS 1.2 solution to connect to secure HTTPS servers.
 
+During my tests, cURL had a few issues when connecting to some HTTPS servers,
+depending on the supported SSL ciphers. To solve it, I ported and patched 
+[mbedTLS 2.16.6](https://github.com/pspdev/psp-packages/tree/master/mbedtls) to the PSP,
+and switched libcurl to use mbedTLS.
+
 ---
 
 # Demo
 
 ## How?
 
-Let's take a look at what we can use to build these apps,
+Let's take a look at what we can build using these libraries,
 which allows for maximum cross-platform compatibility.
 
 | | | |
@@ -112,7 +117,7 @@ which allows for maximum cross-platform compatibility.
 
 ## Jokr
 
-Jokr is a simple app that fetches a random joke
+Jokr, built by [@KorigamiK](https://github.com/korigamik), is a simple app that fetches a random joke
 from [https://icanhazdadjoke.com](https://icanhazdadjoke.com/),
 and shows it on the screen.
 
@@ -128,7 +133,7 @@ and shows it on the screen.
 
 - Cross-platform builds for Linux, Windows, and PSP
 - SDL2 for graphics and input
-- [Open Source](https://github.com/KorigamiK/PSPHDC-23/tree/main/Jokr)
+- [Open Source](https://github.com/bucanero/PSPHDC-24/tree/main/Jokr)
 
 ### See it in action
 
@@ -165,4 +170,4 @@ class: middle, inverse
 - [PSP-SDK Net Resolver sample](https://github.com/pspdev/pspsdk/tree/master/src/samples/net/resolver)
 - [PSP-Maps source code](https://github.com/PSP-Archive/PSP-Maps)
 - [libcurl sample](https://github.com/KorigamiK/PSP-Net-libcurl) (with sceGu)
-- [Jokr source code](https://github.com/KorigamiK/PSPHDC-23/tree/demo-app/Jokr) (with auto access point connection)
+- [Jokr source code](https://github.com/bucanero/PSPHDC-24/tree/demo-app/Jokr) (with auto access point connection)
