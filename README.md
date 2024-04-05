@@ -1,5 +1,5 @@
-# PSPHDC-23
+# PSPHDC-24
 
-Slides for SSL support on the PSP in the homebrew developer conference
+Slides about cURL with SSL support on the PSP for the PSPHDC-24 (Homebrew Developer Conference 2024)
 
-Read the slides [here](https://korigamik.github.io/PSPHDC-23/#1)
+- [Read the slides](https://bucanero.github.io/PSPHDC-24/)
